@@ -50,6 +50,6 @@ def groups_loss():
     print(f'\nThe minimum loss: {min_loss}')
     print(f'\nThe minimum loss for training: {min_loss_t}')
     print(f'\nThe accuracy is: {min_accuracy}')
-    print(f'\nThe best accuracy is: {max_accuracy}')
+    print(f'\nThe max accuracy is: {max_accuracy}')
 
     return PATH, min_groups, PATH_T, min_groups_t

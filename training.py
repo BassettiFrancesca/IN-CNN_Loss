@@ -22,8 +22,6 @@ def train(train_set, PATH):
 
     for epoch in range(num_epochs):
 
-        epoch_loss = 0.0
-
         for i, (inputs, labels) in enumerate(train_loader):
             inputs = inputs.to(device)
             labels = labels.to(device)
@@ -35,9 +33,18 @@ def train(train_set, PATH):
             loss.backward()
             optimizer.step()
 
-            epoch_loss += loss.item()
+    epoch_loss = 0.0
+
+    for l, (inputs, labels) in enumerate(train_loader):
+        inputs = inputs.to(device)
+        labels = labels.to(device)
+
+        outputs = net(inputs)
+        loss = criterion(outputs, labels)
+
+        epoch_loss += loss.item()
 
     print('Finished Training')
 
     torch.save(net.state_dict(), PATH)
-    return epoch_loss / i
+    return 100 * epoch_loss / l

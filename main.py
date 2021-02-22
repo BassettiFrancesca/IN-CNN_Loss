@@ -8,12 +8,14 @@ def mnist_cnn():
 
     PATH = ''
 
-    (PATH, groups) = groups_loss.groups_loss()
+    PATH_T = ''
+
+    (PATH, groups, PATH_T, groups_t) = groups_loss.groups_loss()
 
     finish = time.time()
 
     print(f'The best groups: {groups}')
-    print(PATH)
+    print(f'The best groups for testing: {groups_t}')
 
     print('Seconds passed: %.3f' % (finish - start))
 
